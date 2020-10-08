@@ -1,0 +1,262 @@
+ctx.fillStyle = '#ffffff';
+ctx.beginPath();
+ctx.moveTo(px1, py1);
+ctx.lineTo(x1, y1);
+ctx.lineTo(x2, y2);
+ctx.lineTo(px2, py2);
+ctx.closePath();
+ctx.fill();
+
+ctx.strokeStyle = '#000000';
+ctx.beginPath();
+ctx.moveTo(px1, py1);
+ctx.lineTo(x1, y1);
+ctx.moveTo(px2, py2);
+ctx.lineTo(x2, y2);
+ctx.stroke();
+
+
+
+//var alpha = al / 255.0;
+//var re = 255 * (1 - alpha) + re * alpha;
+//re = Math.floor(re);
+// var isMarked = re > 127 ? 255 : 0;
+
+
+//var red = Math.floor(255 * x / w);
+//var grn = Math.floor(255 * y / h);
+//data1[dstInd++] = red;
+//data1[dstInd++] = grn;
+//data1[dstInd++] = 0;
+//data1[dstInd++] = 255;
+
+// mod 0
+//var byteInd = (w * y + x) * 4;
+//data1[dstInd++] = data0[byteInd++];
+//data1[dstInd++] = data0[byteInd++];
+//data1[dstInd++] = data0[byteInd++];
+//data1[dstInd++] = 255;
+
+// mod 1
+//var dx = x - c, dy = y - r;
+//var dist = Math.sqrt(dx * dx + dy * dy);
+//var gray = Math.floor(dist) * 2;
+//gray = Math.max(0, Math.min(gray, 255));
+//data1[dstInd++] = gray;
+//data1[dstInd++] = gray;
+//data1[dstInd++] = gray;
+//data1[dstInd++] = 255;
+
+
+
+
+/*
+var draw_distances = function(page, data, w, h)
+{
+	var srcInd = 0, dstInd = 0;
+	for(var r = 0; r < h; r++) {
+		for(var c = 0; c < w; c++) {
+			var x = Math.floor(page[srcInd++]);
+			var y = Math.floor(page[srcInd++]);
+			var dx = x - c, dy = y - r;
+			var dist = Math.sqrt(dx * dx + dy * dy);
+			var gray = Math.floor(dist) * 2;
+			gray = Math.max(0, Math.min(gray, 255));
+			data[dstInd++] = gray;
+			data[dstInd++] = gray;
+			data[dstInd++] = gray;
+			data[dstInd++] = 255;
+		}
+	}
+};
+*/
+
+
+
+		//draw_jfa_diagram(pages[0], imgData0, imgData1, w, h, 0);
+		//ctx1.putImageData(imgData1, 0, 0);
+
+		//draw_distances(pages[0], imgData2.data, w, h);
+		//draw_jfa_diagram(pages[0], imgData0, imgData2, w, h, 1);
+
+
+
+
+
+		/*
+		for(var i = 0; i < objects.length; i++) {
+			var obj = objects[i];
+			for(var j = 0; j < 2; j++) {
+				var p = obj.points[j];
+				p.x += p.vx * frameDelta;
+				if (p.x < 0) {
+					p.x = 0;
+					p.vx *= -1;
+				} else if (p.x > w - 1) {
+					p.x = w - 1;
+					p.vx *= -1;
+				}
+				p.y += p.vy * frameDelta;
+				if (p.y < 0) {
+					p.y = 0;
+					p.vy *= -1;
+				} else if (p.y > h - 1) {
+					p.y = h - 1;
+					p.vy *= -1;
+				}
+			}
+		}
+		*/
+
+
+
+/*
+	var speed = 10.0;
+	var numObjects = 5;
+	objects = new Array(numObjects);
+	for(var i = 0; i < objects.length; i++) {
+		var obj = {
+			col: randomColor(),
+			points: [
+				{
+					x: Math.random() * w,
+					y: Math.random() * h,
+					vx: (Math.random() * 2 - 1) * speed,
+					vy: (Math.random() * 2 - 1) * speed				
+				},
+				{
+					x: Math.random() * w,
+					y: Math.random() * h,
+					vx: (Math.random() * 2 - 1) * speed,
+					vy: (Math.random() * 2 - 1) * speed				
+				}
+			]
+		};
+		objects[i] = obj;
+	}
+*/
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var objects = [];
+
+/*
+ * If ctxdummy is null, dummy surface will not be used.
+ */
+
+/*
+var drawInitialImage = function(ctx, ctxdummy)
+{
+	var w = ctx.w, h = ctx.h;
+
+	ctx.clearRect(0, 0, ctx.w, ctx.h);
+
+	//var numLines = 3;
+	var numLines = objects.length;
+	for(var i = 0; i < numLines; i++) {
+
+		var context = ctxdummy ? ctxdummy : ctx;
+
+		var x0, y0, x1, y1;
+		if (false) {
+			context.strokeStyle = randomColor();  
+			x0 = Math.floor(Math.random() * context.w);
+			y0 = Math.floor(Math.random() * context.h);
+			x1 = Math.floor(Math.random() * context.w);
+			y1 = Math.floor(Math.random() * context.h);
+		} else {
+			var obj = objects[i];
+			context.strokeStyle = obj.col;
+			x0 = obj.points[0].x;
+			y0 = obj.points[0].y;
+			x1 = obj.points[1].x;
+			y1 = obj.points[1].y;
+
+		}
+
+		var bounds;
+		if (ctxdummy) {
+			bounds = {
+				x0: Math.max(Math.floor(Math.min(x0, x1)), 0),
+				y0: Math.max(Math.floor(Math.min(y0, y1)), 0),
+				x1: Math.max(Math.ceil(Math.max(x0, x1)), ctxdummy.w),
+				y1: Math.max(Math.ceil(Math.max(y0, y1)), ctxdummy.h)
+			};
+			context.clearRect(0, 0, bounds.x1 - bounds.x0, bounds.y1 - bounds.y0);
+		} else {
+			bounds = {
+				x0: x0,
+				y0: y0,
+				x1: x1,
+				y1: y1
+			}
+		}
+
+		context.beginPath();
+		context.moveTo(x0 - bounds.x0, y0 - bounds.y0);
+		context.lineTo(x1 - bounds.x0, y1 - bounds.y0);
+		context.stroke();
+
+		if (ctxdummy) {
+			applyDummy(ctx, ctxdummy, bounds);
+		}
+	}
+};
+*/
+
+
+
+var fixAntialias = function(w, h, imgData, arr)
+{
+	var data = imgData.data;
+
+	for(var r = 0; r < h; r++) {
+		for(var c = 0; c < w; c++) {
+			var byteInd = (w * r + c) * 4;
+
+			var re = data[byteInd  ];
+			var gr = data[byteInd+1];
+			var bl = data[byteInd+2];
+			var al = data[byteInd+3];
+
+			var isMarked = al > 127;
+
+			if (isMarked) {
+				data[byteInd  ] = re;
+				data[byteInd+1] = gr;
+				data[byteInd+2] = bl;
+				data[byteInd+3] = 255;
+			} else {
+				data[byteInd  ] = 255;
+				data[byteInd+1] = 255;
+				data[byteInd+2] = 255;
+				data[byteInd+3] = 0;
+			}
+
+			//byteInd += 4;
+		}
+	}
+};
+
+
+//var doFixAntialias = false; // Reflect the changes to image
+//if (doFixAntialias) {
+//	fixAntialias(w, h, imgData0);
+//	ctx0.putImageData(imgData0, 0, 0); 
+//}
